@@ -35,13 +35,14 @@ var getForcast = function (latitude, longitude, city) {
             return response.json();
         })
         .then(function(data) {
-            displayWeather(data, city);
+            displayForcast(data, city);
         })
 };
 
-var displayWeather = function (weather, city) {
-    console.log(weather.daily);
-    var currentDaily = weather.daily[0];
+var displayCurrent = function (weather, city) {
+    console.log(weather)
+    console.log(weather.current);
+    var currentDaily = weather.current;
     var dailyName = document.createElement("h3");
     dailyName.textContent = city;
     weatherContainer.appendChild(dailyName);
@@ -49,7 +50,7 @@ var displayWeather = function (weather, city) {
     var weatherIcon = document.createElement("img");
     weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${currentDaily.weather[0].icon}@2x.png`);
     weatherContainer.appendChild(weatherIcon);
-}
+};
 
 
 
